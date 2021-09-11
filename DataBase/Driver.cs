@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DataBase
+namespace DataBaseLib
 {
     public class Driver
     {

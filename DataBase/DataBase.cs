@@ -1,23 +1,20 @@
-﻿using System.Collections.Generic;
-using System.Dynamic;
-using DataBase;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 
-namespace SalesLib
+namespace DataBaseLib
 {
-    public class DataBase : ConnectionDB
+    public class DataBase
     {
+        public ConnectionDB data;
+
         public DataBase()
         {
-
-            var connectionString = $"Server={mysql60.hostland.ru};Database={host1323541_sbd16};Uid={host1323541_itstep};Pwd={269f43dc}";
-               // нужно разделить
-            //ConnectionString.Init(@"db_connect.ini");
-            db = new MySqlConnection(
-                connectionString);
-            command = new MySqlCommand() { Connection = db };
+            data = new ConnectionDB();
+            string str = $"mysql60.hostland.ru|host1323541_sbd11|host1323541_itstep|269f43dc";
+            var connectionString = ConnectionString.Init(str);
+            data.db = new MySqlConnection(connectionString);
+            data.command = new MySqlCommand() { Connection = data.db };
         }
-        
+
         // Примеры объявления методов и вызова их из классов
         // public void ExportProductsToCSV(string path) => Export.ProductsToCSV(path);
         // public void ExportOrdersToCSV(string path) => Export.OrdersToCSV(path);

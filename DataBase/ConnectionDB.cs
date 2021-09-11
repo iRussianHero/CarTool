@@ -1,10 +1,23 @@
 ﻿using MySql.Data.MySqlClient;
 
-namespace DataBase
+namespace DataBaseLib
 {
     public class ConnectionDB
     {
-        protected MySqlConnection db;
-        protected MySqlCommand command;
+        public MySqlConnection db;
+        public MySqlCommand command;
+        public void Open() => db.Open();
+        public void Close() => db.Close();
+
+        public ConnectionDB()
+        {
+            db = new MySqlConnection();
+            command = new MySqlCommand();
+        }
+        public ConnectionDB(string connection)
+        {
+            db = new MySqlConnection(connection);
+            command = new MySqlCommand() { Connection = db };
+        }
     }
 }
