@@ -1,4 +1,7 @@
 ﻿using System;
+using System.ComponentModel.Design;
+using System.Net.Http;
+using CLI;
 
 namespace AutoTool
 {
@@ -6,7 +9,7 @@ namespace AutoTool
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Show.Menu();
         }
     }
 }
