@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataBase
+namespace DataBaseLib
 {
-    class Car
+    public class Car
     {
         public int Id { get; set; }
         public string RegSign { get; set; }

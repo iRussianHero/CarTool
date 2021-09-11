@@ -1,7 +1,5 @@
-﻿using System;
-using System.ComponentModel.Design;
-using System.Net.Http;
-using CLI;
+﻿using CLI;
+using DataBaseLib;
 
 namespace AutoTool
 {
@@ -10,6 +8,8 @@ namespace AutoTool
         static void Main(string[] args)
         {
             Show.Menu();
+            Car aa = new Car();
+            DataBase db = new DataBase();
         }
     }
 }
