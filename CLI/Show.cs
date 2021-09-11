@@ -9,7 +9,7 @@ namespace CLI
             Console.WriteLine("1. Действия с водителями");
             Console.WriteLine("2. Действия с автомобилями");
             Console.WriteLine("3. Действия с сервисом");
-            Console.WriteLine("4. Дполнительные функции");
+            Console.WriteLine("4. Дополнительные функции");
             var key = Convert.ToChar(Console.ReadLine());
             switch (key)
             {
@@ -36,6 +36,7 @@ namespace CLI
                 Console.WriteLine("2 Ввод данных водителя");
                 Console.WriteLine("3 Экспорт данных водителей");
                 Console.WriteLine("4 Импорт данных водителей");
+                Console.WriteLine("0 Назад");
                 var key = Convert.ToChar(Console.ReadLine());
                 switch (key)
                 {
@@ -46,6 +47,9 @@ namespace CLI
                     case '3':
                         break;
                     case '4':
+                        break;
+                    case '0':
+                        Menu();
                         break;
                     default:
                         Console.WriteLine("Введен некорректный символ");
@@ -59,6 +63,7 @@ namespace CLI
                 Console.WriteLine("2 Ввод данных автомобиля");
                 Console.WriteLine("3 Экспорт данных автомобиля");
                 Console.WriteLine("4 Импорт данных автомобиляй");
+                Console.WriteLine("0 Назад");
                 var key = Convert.ToChar(Console.ReadLine());
                 switch (key)
                 {
@@ -69,6 +74,9 @@ namespace CLI
                     case '3':
                         break;
                     case '4':
+                        break;
+                    case '0':
+                        Menu();
                         break;
                     default:
                         Console.WriteLine("Введен некорректный символ");
@@ -81,6 +89,7 @@ namespace CLI
                 Console.WriteLine("2 Ввод данных об обслуживании");
                 Console.WriteLine("3 Экспорт данных об обслуживании");
                 Console.WriteLine("4 Импорт данных об обслуживании");
+                Console.WriteLine("0 Назад");
                 var key = Convert.ToChar(Console.ReadLine());
                 switch (key)
                 {
@@ -92,6 +101,9 @@ namespace CLI
                         break;
                     case '4':
                         break;
+                    case '0':
+                        Menu();
+                        break;
                     default:
                         Console.WriteLine("Введен некорректный символ");
                         break;
@@ -101,6 +113,7 @@ namespace CLI
             {
                 Console.WriteLine("1 Проверка состояния Автомобиля");
                 Console.WriteLine("2 Проверка пробега по Водителю");
+                Console.WriteLine("0 Назад");
                 var key = Convert.ToChar(Console.ReadLine());
                 switch (key)
                 {
@@ -108,13 +121,14 @@ namespace CLI
                         break;
                     case '2':
                         break;
+                    case '0':
+                        Menu();
+                        break;
                     default:
                         Console.WriteLine("Введен некорректный символ");
                         break;
                 }
             }
-            
-            
         }
     }
 }
