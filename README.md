@@ -51,3 +51,6 @@
 4. Дполнительные функции
   4.1 Проверка состояния Автомобиля
   4.2 Проверка пробега по Водителю
+  
+Info:
+https://github.com/vyshky/Sales-1/blob/NewBranch/SalesLib/DataBase.cs пример DB команд.
