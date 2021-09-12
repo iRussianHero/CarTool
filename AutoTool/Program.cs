@@ -1,7 +1,6 @@
 ﻿using System;
 using CLI;
 using DataBaseLib;
-using Org.BouncyCastle.Bcpg.Sig;
 
 namespace AutoTool
 {
@@ -49,6 +48,7 @@ namespace AutoTool
 
         public static void SubMenu(string key)
         {
+            if (IsEmpty(key)) return;
             switch (key)
             {
                 case "1":
@@ -72,10 +72,7 @@ namespace AutoTool
             {
                 Show.SubMenu1();
                 var key = Convert.ToString(Console.ReadLine());
-                if (IsEmpty(key))
-                {
-                    return;
-                }
+                if (IsEmpty(key)) return;
 
                 switch (key)
                 {
@@ -104,10 +101,7 @@ namespace AutoTool
             {
                 Show.SubMenu2();
                 var key = Convert.ToString(Console.ReadLine());
-                if (IsEmpty(key))
-                {
-                    return;
-                }
+                if (IsEmpty(key)) return;
 
                 switch (key)
                 {
@@ -134,10 +128,7 @@ namespace AutoTool
             {
                 Show.SubMenu3();
                 var key = Convert.ToString(Console.ReadLine());
-                if (IsEmpty(key))
-                {
-                    return;
-                }
+                if (IsEmpty(key)) return;
 
                 switch (key)
                 {
@@ -164,10 +155,7 @@ namespace AutoTool
             {
                 Show.SubMenu4();
                 var key = Convert.ToString(Console.ReadLine());
-                if (IsEmpty(key))
-                {
-                    return;
-                }
+                if (IsEmpty(key)) return;
 
                 switch (key)
                 {
