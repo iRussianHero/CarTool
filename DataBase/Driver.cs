@@ -4,10 +4,10 @@ namespace DataBaseLib
 {
     public class Driver
     {
-        public int Id { get; set; }
+        public uint Id { get; set; }
         public string FullName { get; set; }
-        public int Age { get; set; }
-        public int DriveExp { get; set; }
-        public int IdCar { get; set; }
+        public uint Age { get; set; }
+        public uint DriveExp { get; set; }
+        public uint IdCar { get; set; }
     }
 }
