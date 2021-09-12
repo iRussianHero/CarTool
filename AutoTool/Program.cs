@@ -1,6 +1,7 @@
 ﻿using System;
 using CLI;
 using DataBaseLib;
+using Org.BouncyCastle.Bcpg.Sig;
 
 namespace AutoTool
 {
@@ -13,8 +14,13 @@ namespace AutoTool
             {
                 Show.Menu();
                 key = Convert.ToString(Console.ReadLine());
+                if (key == "5")
+                {
+                    Console.WriteLine("До свидания");
+                    continue;
+                }
                 SubMenu(key);
-            } while (true);
+            } while (key != "5");
         }
 
         public static bool IsEmpty(string key)
@@ -57,8 +63,6 @@ namespace AutoTool
                 case "4":
                     Info(); // Info car,driver
                     break;
-                case "5":
-                    return; // quit
                 default:
                     Console.WriteLine("Введен некорректный символ");
                     break;
@@ -72,6 +76,7 @@ namespace AutoTool
                 {
                     return;
                 }
+
                 switch (key)
                 {
                     case "1":
@@ -121,6 +126,7 @@ namespace AutoTool
                         Console.WriteLine("Введен некорректный символ");
                         break;
                 }
+
                 Console.ReadLine();
             }
 
@@ -150,12 +156,13 @@ namespace AutoTool
                         Console.WriteLine("Введен некорректный символ");
                         break;
                 }
+
                 Console.ReadLine();
             }
 
             static void Info()
             {
-               Show.SubMenu4();
+                Show.SubMenu4();
                 var key = Convert.ToString(Console.ReadLine());
                 if (IsEmpty(key))
                 {
@@ -175,6 +182,7 @@ namespace AutoTool
                         Console.WriteLine("Введен некорректный символ");
                         break;
                 }
+
                 Console.ReadLine();
             }
         }
