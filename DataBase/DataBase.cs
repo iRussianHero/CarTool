@@ -1,10 +1,11 @@
-﻿using MySql.Data.MySqlClient;
+﻿using System.Collections.Generic;
+using MySql.Data.MySqlClient;
 
 namespace DataBaseLib
 {
     public class DataBase
     {
-        public ConnectionDB data; 
+        public ConnectionDB data;
         // data хранит в себе :
         // 1 data.db; Хранит наш mysql60.hostland.ru|host1323541_sbd11|host1323541_itstep|269f43dc(Используется для открытия и закрытия доступа к  нашим таблицам)
         // 2 data.command; Может считывать данные с таблиц mysql60.hostland.ru|host1323541_sbd11|host1323541_itstep|269f43dc
@@ -21,7 +22,7 @@ namespace DataBaseLib
         }
 
         // Примеры объявления методов и вызова их из классов
-        public void SelectDriver() => Select.Driver(data);
+        public List<Driver> GetDriver() => Select.Driver(data);
 
         // public void ExportProductsToCSV(string path) => Export.ProductsToCSV(path);
         // public void ExportOrdersToCSV(string path) => Export.OrdersToCSV(path);
