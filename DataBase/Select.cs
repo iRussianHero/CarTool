@@ -29,7 +29,6 @@ namespace DataBaseLib
                     IdCar = idCar
                 });
             }
-
             db.Close();
             return list;
         }
