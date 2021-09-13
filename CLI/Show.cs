@@ -12,6 +12,20 @@ namespace CLI
             Console.ResetColor();
         }
 
+        public static void PrintRed(string str)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(str);
+            Console.ResetColor();
+        }
+
+        public static void PrintGreen(string str)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(str);
+            Console.ResetColor();
+        }
+
         public static void Menu()
         {
             PrintYelloy("1. Действия с водителями");
