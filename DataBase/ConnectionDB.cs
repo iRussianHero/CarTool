@@ -10,21 +10,15 @@ namespace DataBaseLib
         public MySqlConnection db;
         public MySqlCommand command;
 
-        public void Open()
-        {
-            db.Open();
-        }
-
-        public void Close()
-        {
-            db.Close();
-        }
+        public void Open() => db.Open();
+        public void Close() => db.Close();
 
         public ConnectionDB()
         {
             db = new MySqlConnection();
             command = new MySqlCommand();
         }
+
         public ConnectionDB(string connection)
         {
             db = new MySqlConnection(connection);
