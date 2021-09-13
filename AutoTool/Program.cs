@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using CLI;
 using DataBaseLib;
+using MySql.Data.MySqlClient;
 
 namespace AutoTool
 {
