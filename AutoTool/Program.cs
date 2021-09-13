@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using CLI;
 using DataBaseLib;
 
@@ -18,6 +19,7 @@ namespace AutoTool
                     Console.WriteLine("До свидания");
                     continue;
                 }
+
                 SubMenu(key);
             } while (key != "5");
         }
@@ -33,17 +35,44 @@ namespace AutoTool
             return false;
         }
 
-        public static void PrintDriver(DataBase driver)
+        public static void PrintDriver()
         {
-            Console.ForegroundColor = ConsoleColor.Green;
-            var list = driver.GetDriver();
-            foreach (var var in list)
+            DataBase db = new DataBase();
+            var list = db.SelectDriver();
+            foreach (var driver in list)
             {
-                Console.WriteLine($"{var.FullName} {var.Age} лет" +
-                                  $"\n Cтаж вождения - {var.DriveExp}, id автомобиля - {var.IdCar}\n");
+                Show.PrintRed($"id водителя {driver.Id}");
+                Show.PrintGreen($"{driver.FullName} {driver.Age} лет");
+                Show.PrintYelloy($"Cтаж вождения - {driver.DriveExp}, id автомобиля - {driver.IdCar}\n");
             }
+        }
 
-            Console.ResetColor();
+        public static void InsertDriver()
+        {
+            List<Driver> list = new List<Driver>();
+            var db = new DataBase();
+
+            Show.PrintGreen("Введите Имя и фамилию в одну строчку");
+            var fullName = Convert.ToString(Console.ReadLine());
+
+            Show.PrintGreen("Введите возраст");
+            var age = Convert.ToUInt32(Console.ReadLine());
+
+            Show.PrintGreen("Введите стаж вождения");
+            var drivingExp = Convert.ToUInt32(Console.ReadLine());
+
+            //db.SelectCar();  //  Ждать пока Алексей напишет метод
+            Show.PrintGreen("Введите id автомобиля");
+            var idCar = Convert.ToUInt32(Console.ReadLine());
+
+            list.Add(new Driver
+            {
+                FullName = fullName,
+                Age = age,
+                DriveExp = drivingExp,
+                IdCar = idCar
+            });
+            db.InsertDriver(list);
         }
 
         public static void SubMenu(string key)
@@ -77,10 +106,11 @@ namespace AutoTool
                 switch (key)
                 {
                     case "1":
-                        DataBase db = new DataBase();
-                        PrintDriver(db);
+                        PrintDriver();
                         break;
                     case "2":
+                        InsertDriver();
+                        Show.PrintGreen($"Запрос отправлен");
                         break;
                     case "3":
                         break;
@@ -94,6 +124,7 @@ namespace AutoTool
                         break;
                 }
 
+                Console.WriteLine($"Нажмите любую клавишу, чтобы продолжить");
                 Console.ReadLine();
             }
 
@@ -121,6 +152,7 @@ namespace AutoTool
                         break;
                 }
 
+                Console.WriteLine($"Нажмите любую клавишу, чтобы продолжить");
                 Console.ReadLine();
             }
 
@@ -148,6 +180,7 @@ namespace AutoTool
                         break;
                 }
 
+                Console.WriteLine($"Нажмите любую клавишу, чтобы продолжить");
                 Console.ReadLine();
             }
 
@@ -171,6 +204,7 @@ namespace AutoTool
                         break;
                 }
 
+                Console.WriteLine($"Нажмите любую клавишу, чтобы продолжить");
                 Console.ReadLine();
             }
         }
