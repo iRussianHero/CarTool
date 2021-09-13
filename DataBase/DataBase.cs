@@ -24,7 +24,7 @@ namespace DataBaseLib
 
         // Примеры объявления методов и вызова их из классов
         public List<Driver> SelectDriver() => Select.Driver(connection);
-        public void InsertDriver(List<Driver> driver) => Insert.Driver(driver, connection);
+        public void InsertDriver(Driver driver) => Insert.Driver(driver, connection);
 
         // public void ExportProductsToCSV(string path) => Export.ProductsToCSV(path);
         // public void ExportOrdersToCSV(string path) => Export.OrdersToCSV(path);

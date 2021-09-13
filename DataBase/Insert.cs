@@ -5,15 +5,11 @@ namespace DataBaseLib
 {
     public class Insert
     {
-        public static void Driver(List<Driver> list1, ConnectionDB connection)
+        public static void Driver(Driver driver, ConnectionDB connection)
         {
             connection.Open();
-            var sql = string.Empty;
-            foreach (var list in list1)
-            {
-                sql += $"INSERT INTO driver(full_name,age,driving_experience,id_auto)" +
-                       $"VALUES ('{list.FullName}','{list.Age}','{list.DriveExp}','{list.IdCar}');";
-            }
+            var sql = $"INSERT INTO driver(full_name,age,driving_experience,id_auto)" +
+                      $"VALUES ('{driver.FullName}','{driver.Age}','{driver.DriveExp}','{driver.IdCar}');";
             connection.command.CommandText = sql;
             connection.command.ExecuteNonQuery();
             connection.Close();
