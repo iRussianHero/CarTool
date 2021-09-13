@@ -49,7 +49,6 @@ namespace AutoTool
 
         public static void InsertDriver()
         {
-            List<Driver> list = new List<Driver>();
             var db = new DataBase();
 
             Show.PrintGreen("Введите Имя и фамилию в одну строчку");
@@ -65,14 +64,14 @@ namespace AutoTool
             Show.PrintGreen("Введите id автомобиля");
             var idCar = Convert.ToUInt32(Console.ReadLine());
 
-            list.Add(new Driver
+            var driver = new Driver
             {
                 FullName = fullName,
                 Age = age,
                 DriveExp = drivingExp,
                 IdCar = idCar
-            });
-            db.InsertDriver(list);
+            };
+            db.InsertDriver(driver);
         }
 
         public static void SubMenu(string key)
