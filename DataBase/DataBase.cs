@@ -36,8 +36,8 @@ namespace DataBaseLib
         public List<Driver> Select(string type)
         {
             Driver driver = new Driver();
-            Driver car = new Driver();
-            Driver service = new Driver();
+            Car car = new Car();
+            Service service = new Service();
             switch (type)
             {
                 case driverType:
