@@ -33,37 +33,14 @@ namespace DataBaseLib
 
         // Примеры объявления методов и вызова их из классов
 
-        public List<Driver> Select(string type)
+        public IList Select(IQuery _inteface)
         {
-            Driver driver = new Driver();
-            Car car = new Car();
-            Service service = new Service();
-            switch (type)
-            {
-                case driverType:
-                    return (List<Driver>)driver.Select(connection);
-                case carType:
-                    return (List<Driver>)car.Select(connection);
-                case serviceType:
-                    return (List<Driver>)service.Select(connection);
-                default:
-                    Console.WriteLine("Введен некорректный символ");
-                    break;
-            }
-            return new List<Driver>();
+            return _inteface.Select(connection);
         }
 
-        public void Insert(Driver driver)
+        public void Insert(IQuery _interface)
         {
-            driver.Insert(connection);
-        }
-        public void Insert(Car car)
-        {
-            car.Insert(connection);
-        }
-        public void Insert(Service service)
-        {
-            service.Insert(connection);
+            _interface.Insert(connection);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using DataBaseLib;
 
 namespace CLI
@@ -8,6 +9,7 @@ namespace CLI
         const string driverType = "System.Collections.Generic.List`1[DataBaseLib.Driver]";
         const string CarType = "System.Collections.Generic.List`1[DataBaseLib.Car]";
         const string ServiceType = "System.Collections.Generic.List`1[DataBaseLib.Service]";
+
         public static bool IsEmpty(string key)
         {
             if (key == string.Empty)
@@ -133,7 +135,8 @@ namespace CLI
         public static void PrintDriver()
         {
             DataBase db = new DataBase();
-            var list = db.Select(driverType);
+            IQuery idriver = new Driver();
+            var list = (List<Driver>)db.Select(idriver);
             foreach (var driver in list)
             {
                 Show.PrintRed($"id водителя {driver.Id}");
@@ -159,14 +162,24 @@ namespace CLI
             Show.PrintGreen("Введите id автомобиля");
             var idCar = Convert.ToUInt32(Console.ReadLine());
 
-            var driver = new Driver
+            // var driver = new Driver
+            // {
+            //     FullName = fullName,
+            //     Age = age,
+            //     DriveExp = drivingExp,
+            //     IdCar = idCar
+            // };
+            // IQuery idriver = driver; 
+            // db.Insert(idriver);
+
+            IQuery idriver = new Driver
             {
                 FullName = fullName,
                 Age = age,
                 DriveExp = drivingExp,
                 IdCar = idCar
             };
-            db.Insert(driver);
+            db.Insert(idriver);
         }
 
         public static void SubMenu(string key)

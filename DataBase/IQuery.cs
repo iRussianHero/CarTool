@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace DataBaseLib
 {
-    interface IQuery
+    public interface IQuery
     {
         public void Insert(ConnectionDB connection);
 
