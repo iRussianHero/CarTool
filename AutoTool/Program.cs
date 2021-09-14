@@ -20,7 +20,6 @@ namespace AutoTool
                     Console.WriteLine("До свидания");
                     return;
                 }
-
                 Menu.SubMenu(key);
             } while (key != "5");
         }
