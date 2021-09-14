@@ -1,10 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Reflection;
+using System.Reflection.Emit;
 using MySql.Data.MySqlClient;
 
 namespace DataBaseLib
 {
     public class DataBase
     {
+        private const string driverType = "System.Collections.Generic.List`1[DataBaseLib.Driver]";
+        private const string carType = "System.Collections.Generic.List`1[DataBaseLib.Car]";
+        private const string serviceType = "System.Collections.Generic.List`1[DataBaseLib.Service]";
+
         public ConnectionDB connection;
         // connection - это подключение к базе данных
         // connection хранит в себе :
@@ -23,14 +32,38 @@ namespace DataBaseLib
         }
 
         // Примеры объявления методов и вызова их из классов
-        public List<Driver> SelectDriver() => Select.Driver(connection);
-        public void InsertDriver(Driver driver) => Insert.Driver(driver, connection);
 
-        // public void ExportProductsToCSV(string path) => Export.ProductsToCSV(path);
-        // public void ExportOrdersToCSV(string path) => Export.OrdersToCSV(path);
-        // public void ExportPeopleToCSV(string path) => Export.PeopleToCSV(path);
-        // public void ImportOrderFromCSV(List<Orders> orders) => Import.OrderFromCSV(orders);
-        // public void ImportProductsFromCSV(string path) => Import.ProductsFromCSV(path);
-        // public void ImportPeopleFromCSV(string path) => Import.PeopleFromCSV(path);
+        public List<Driver> Select(string type)
+        {
+            Driver driver = new Driver();
+            Driver car = new Driver();
+            Driver service = new Driver();
+            switch (type)
+            {
+                case driverType:
+                    return (List<Driver>)driver.Select(connection);
+                case carType:
+                    return (List<Driver>)car.Select(connection);
+                case serviceType:
+                    return (List<Driver>)service.Select(connection);
+                default:
+                    Console.WriteLine("Введен некорректный символ");
+                    break;
+            }
+            return new List<Driver>();
+        }
+
+        public void Insert(Driver driver)
+        {
+            driver.Insert(connection);
+        }
+        public void Insert(Car car)
+        {
+            car.Insert(connection);
+        }
+        public void Insert(Service service)
+        {
+            service.Insert(connection);
+        }
     }
 }
