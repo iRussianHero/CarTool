@@ -14,21 +14,22 @@ namespace DataBaseLib
 
         public void Insert(ConnectionDB connection)
         {
+            //connection.command.Connection.Open();
             connection.Open();
             var sql = $"INSERT INTO driver(full_name,age,driving_experience,id_auto)" +
-                      $"VALUES ('{this.FullName}','{this.Age}','{this.DriveExp}','{this.IdCar}');";
+                      $"VALUES ('{FullName}','{Age}','{DriveExp}','{IdCar}');";
             connection.command.CommandText = sql;
             connection.command.ExecuteNonQuery();
             connection.Close();
         }
 
-        public IList Select(ConnectionDB db)
+        public IList Select(ConnectionDB connection)
         {
-            db.Open();
+            connection.Open();
             List<Driver> list = new List<Driver>();
             var sql = $@"SELECT * FROM driver";
-            db.command.CommandText = sql;
-            var reader = db.command.ExecuteReader();
+            connection.command.CommandText = sql;
+            var reader = connection.command.ExecuteReader();
             if (!reader.HasRows) return null;
             while (reader.Read())
             {
@@ -46,7 +47,7 @@ namespace DataBaseLib
                     IdCar = idCar
                 });
             }
-            db.Close();
+            connection.Close();
             return list;
         }
     }

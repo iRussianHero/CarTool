@@ -1,19 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Reflection;
-using System.Reflection.Emit;
+﻿using System.Collections;
 using MySql.Data.MySqlClient;
 
 namespace DataBaseLib
 {
     public class DataBase
     {
-        private const string driverType = "System.Collections.Generic.List`1[DataBaseLib.Driver]";
-        private const string carType = "System.Collections.Generic.List`1[DataBaseLib.Car]";
-        private const string serviceType = "System.Collections.Generic.List`1[DataBaseLib.Service]";
-
         public ConnectionDB connection;
         // connection - это подключение к базе данных
         // connection хранит в себе :
@@ -27,6 +18,7 @@ namespace DataBaseLib
             connection = new ConnectionDB();
             string str = $"mysql60.hostland.ru|host1323541_sbd11|host1323541_itstep|269f43dc";
             var connectionString = ConnectionString.Init(str);
+            //connection.command.Connection = new MySqlConnection();
             connection.db = new MySqlConnection(connectionString);
             connection.command = new MySqlCommand() { Connection = connection.db };
         }

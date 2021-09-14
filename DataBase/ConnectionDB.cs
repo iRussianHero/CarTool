@@ -1,6 +1,4 @@
-﻿using System;
-using System.Data;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 
 
 namespace DataBaseLib
@@ -17,12 +15,6 @@ namespace DataBaseLib
         {
             db = new MySqlConnection();
             command = new MySqlCommand();
-        }
-
-        public ConnectionDB(string connection)
-        {
-            db = new MySqlConnection(connection);
-            command = new MySqlCommand() { Connection = db };
         }
     }
 }
