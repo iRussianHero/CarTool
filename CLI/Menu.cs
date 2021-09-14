@@ -125,7 +125,7 @@ namespace CLI
             Console.ReadLine();
         }
 
-        public static void SubMenu(string key)
+        public static void _Menu(string key)
         {
             if (IsEmpty(key)) return;
             switch (key)

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using CLI;
-using DataBaseLib;
 
 namespace AutoTool
 {
@@ -20,7 +17,8 @@ namespace AutoTool
                     Console.WriteLine("До свидания");
                     return;
                 }
-                Menu.SubMenu(key);
+
+                Menu._Menu(key);
             } while (key != "5");
         }
     }
