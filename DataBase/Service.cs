@@ -18,7 +18,12 @@ namespace DataBaseLib
 
         public void Insert(ConnectionDB connection)
         {
-         
+            connection.Open();
+            var sql = $"INSERT INTO service(id_auto, oil, control_break, antifreeze, tires)" +
+                      $"VALUES ('{IdCar}','{Oil}','{ControlBreak}','{Antifreeze}','{Tires}');";
+            connection.command.CommandText = sql;
+            connection.command.ExecuteNonQuery();
+            connection.Close();
         }
 
         public IList Select(ConnectionDB connection)
@@ -48,7 +53,7 @@ namespace DataBaseLib
                 });
             }
             connection.Close();
-            return new List<Service>();
+            return list;
         }
     }
 }
