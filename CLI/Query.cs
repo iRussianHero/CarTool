@@ -45,5 +45,19 @@ namespace CLI
             };
             db.Insert(idriver);
         }
+
+        public static void PrintService()
+        {
+            DataBase db = new DataBase();
+            IQuery iService = new Service();
+            var list = (List<Service>)db.Select(iService);
+            foreach (var service in list)
+            {
+                Show.PrintRed($"id автомобиля {service.IdCar}");
+                Show.PrintGreen($"Последняя замена масла: {service.Oil}\nПоследняя замена масла: {service.Antifreeze}");
+                Show.PrintYelloy($"Контроль тормозов: {service.ControlBreak}\nКонтроль шин: {service.Tires}\n");
+            }
+        }
+
     }
 }
