@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
 using MySql.Data.MySqlClient;
 
 namespace DataBaseLib
@@ -18,19 +18,21 @@ namespace DataBaseLib
             connection = new ConnectionDB();
             string str = $"mysql60.hostland.ru|host1323541_sbd11|host1323541_itstep|269f43dc";
             var connectionString = ConnectionString.Init(str);
+            //connection.command.Connection = new MySqlConnection();
             connection.db = new MySqlConnection(connectionString);
             connection.command = new MySqlCommand() { Connection = connection.db };
         }
 
         // Примеры объявления методов и вызова их из классов
-        public List<Driver> SelectDriver() => Select.Driver(connection);
-        public void InsertDriver(Driver driver) => Insert.Driver(driver, connection);
 
-        // public void ExportProductsToCSV(string path) => Export.ProductsToCSV(path);
-        // public void ExportOrdersToCSV(string path) => Export.OrdersToCSV(path);
-        // public void ExportPeopleToCSV(string path) => Export.PeopleToCSV(path);
-        // public void ImportOrderFromCSV(List<Orders> orders) => Import.OrderFromCSV(orders);
-        // public void ImportProductsFromCSV(string path) => Import.ProductsFromCSV(path);
-        // public void ImportPeopleFromCSV(string path) => Import.PeopleFromCSV(path);
+        public IList Select(IQuery _inteface)
+        {
+            return _inteface.Select(connection);
+        }
+
+        public void Insert(IQuery _interface)
+        {
+            _interface.Insert(connection);
+        }
     }
 }

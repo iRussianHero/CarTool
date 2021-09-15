@@ -3,7 +3,7 @@ using DataBaseLib;
 
 namespace CLI
 {
-    public class Show
+    public class Show // Вывод меню и подменю
     {
         public static void PrintYelloy(string str)
         {
@@ -35,7 +35,7 @@ namespace CLI
             PrintYelloy("5. Завершение программы");
         }
 
-        public static void SubMenu1()
+        public static void DriverMenu()
         {
             PrintYelloy("1 Показать всех водителей");
             PrintYelloy("2 Ввод данных водителя");
@@ -44,7 +44,7 @@ namespace CLI
             PrintYelloy("0 Назад");
         }
 
-        public static void SubMenu2()
+        public static void CarMenu()
         {
             PrintYelloy("1 Показать все автомобили");
             PrintYelloy("2 Ввод данных автомобиля");
@@ -53,7 +53,7 @@ namespace CLI
             PrintYelloy("0 Назад");
         }
 
-        public static void SubMenu3()
+        public static void ServiceMenu()
         {
             PrintYelloy("1 Показать сервисную информацию");
             PrintYelloy("2 Ввод данных об обслуживании");
@@ -62,7 +62,7 @@ namespace CLI
             PrintYelloy("0 Назад");
         }
 
-        public static void SubMenu4()
+        public static void Info()
         {
             Show.PrintYelloy("1 Проверка состояния Автомобиля");
             Show.PrintYelloy("2 Проверка пробега по Водителю");
