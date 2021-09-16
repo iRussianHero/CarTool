@@ -34,8 +34,10 @@ namespace CLI
                     Show.PrintGreen($"Запрос отправлен");
                     break;
                 case "3":
+                    Query.ExportDriver();
                     break;
                 case "4":
+                    Query.ImportDriver();
                     break;
                 case "0":
                     break;
