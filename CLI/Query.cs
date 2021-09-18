@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using DataBaseLib;
 
 namespace CLI
@@ -9,7 +10,8 @@ namespace CLI
         public static void PrintDriver()
         {
             DataBase db = new DataBase();
-            IQuery idriver = new Driver();
+            //IQuery idriver = new Driver();
+            Driver idriver = new Driver();
             var list = (List<Driver>)db.Select(idriver);
             foreach (var driver in list)
             {
@@ -46,6 +48,20 @@ namespace CLI
             db.Insert(idriver);
         }
 
+        public static void ExportDriver()
+        {
+            var db = new DataBase();
+            Driver driver = new Driver();
+            db.Export(driver);
+        }
+
+        public static void ImportDriver()
+        {
+            var db = new DataBase();
+            Driver driver = new Driver();
+            db.Import(driver);
+        }
+
         public static void PrintService()
         {
             DataBase db = new DataBase();
@@ -71,10 +87,10 @@ namespace CLI
 
             Show.PrintGreen("Контроль тормозов (true|false):");
             var control_break = Convert.ToBoolean(Console.ReadLine());
-            
+
             Show.PrintGreen("Ввведите пробег замены антифриза:");
             var antifreeze = Convert.ToInt32(Console.ReadLine());
-            
+
             Show.PrintGreen("Контроль шин (true|false):");
             var tires = Convert.ToBoolean(Console.ReadLine());
 

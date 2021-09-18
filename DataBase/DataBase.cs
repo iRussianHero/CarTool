@@ -18,7 +18,6 @@ namespace DataBaseLib
             connection = new ConnectionDB();
             string str = $"mysql60.hostland.ru|host1323541_sbd11|host1323541_itstep|269f43dc";
             var connectionString = ConnectionString.Init(str);
-            //connection.command.Connection = new MySqlConnection();
             connection.db = new MySqlConnection(connectionString);
             connection.command = new MySqlCommand() { Connection = connection.db };
         }
@@ -33,6 +32,16 @@ namespace DataBaseLib
         public void Insert(IQuery _interface)
         {
             _interface.Insert(connection);
+        }
+
+        public void Export(IQuery _inteface)
+        {
+            _inteface.Export(connection, _inteface + ".csv");
+        }
+
+        public void Import(IQuery _inteface)
+        {
+            _inteface.Import(connection, _inteface + ".csv");
         }
     }
 }

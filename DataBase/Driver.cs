@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 
 namespace DataBaseLib
 {
@@ -14,7 +15,6 @@ namespace DataBaseLib
 
         public void Insert(ConnectionDB connection)
         {
-            //connection.command.Connection.Open();
             connection.Open();
             var sql = $"INSERT INTO driver(full_name,age,driving_experience,id_auto)" +
                       $"VALUES ('{FullName}','{Age}','{DriveExp}','{IdCar}');";
@@ -47,8 +47,54 @@ namespace DataBaseLib
                     IdCar = idCar
                 });
             }
+
             connection.Close();
             return list;
+        }
+
+        public void Export(ConnectionDB connection, string path)
+        {
+            var drivers = Select(connection);
+            var list = (List<Driver>)drivers;
+            using var file = new StreamWriter(path, false);
+            foreach (var driver in list)
+            {
+                file.WriteLine($"{driver.Id}|{driver.FullName}|{driver.Age}|{driver.DriveExp}|{driver.IdCar}");
+            }
+        }
+
+        public void Import(ConnectionDB connection, string path)
+        {
+            connection.Open();
+            var drivers = new List<Driver>();
+            using (StreamReader file = new StreamReader(path))
+            {
+                var list = string.Empty;
+                while ((list = file.ReadLine()) != null)
+                {
+                    var temp = list.Split("|");
+                    var driver = new Driver()
+                    {
+                        Id = uint.Parse(temp[0]),
+                        FullName = temp[1],
+                        Age = uint.Parse(temp[2]),
+                        DriveExp = uint.Parse(temp[3]),
+                        IdCar = uint.Parse(temp[4])
+                    };
+                    drivers.Add(driver);
+                }
+            }
+
+            string sql = string.Empty;
+            foreach (var driver in drivers)
+            {
+                sql = $"INSERT INTO driver(full_name,age,driving_experience,id_auto)" +
+                      $"VALUES ('{driver.FullName}','{driver.Age}','{driver.DriveExp}','{driver.IdCar}');";
+                connection.command.CommandText = sql;
+                connection.command.ExecuteNonQuery();
+            }
+
+            connection.Close();
         }
     }
 }
